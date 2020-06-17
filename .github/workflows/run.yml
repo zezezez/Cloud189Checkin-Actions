@@ -22,7 +22,7 @@ jobs:
       
     - name: requirements
       run: |
-        pip3 install requests rsa 
+        pip3 install -r requirements.txt
         
     - name: Checkin
       run: |
