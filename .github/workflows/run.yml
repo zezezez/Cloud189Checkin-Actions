@@ -16,7 +16,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Python
-      uses: peng4740/gh-action-python@master
+      run: |
+        apt update && \
+        apt install python3
       
     - name: requirements
       run: |
