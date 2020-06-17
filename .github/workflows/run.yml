@@ -1,0 +1,30 @@
+name: Cloud189Checkin
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: 0 2 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Python
+    - uses: peng4740/gh-action-python
+      
+    - name: requirements
+      run: |
+        pip3 install -r requirements.txt
+        
+    - name: Checkin
+      run: |
+        python C189Checkin.py <<EOF
+        ${{ secrets.USER }}
+        ${{ secrets.PWD }}
+        EOF
