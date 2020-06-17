@@ -1,10 +1,15 @@
-import requests, time, re, rsa, json, base64
+import requests, time, re, rsa, json, base64, argparse
 from urllib import parse
 
 s = requests.Session()
 
-username = ""
-password = ""
+parser = argparse.ArgumentParser(description='--user 账号,--pwd 密码')
+parser.add_argument('--user', type=str, default = '')
+parser.add_argument('--pwd', type=str, default = '')
+args = parser.parse_args()
+
+username = args.user
+password = args.pwd
 
 if(username == "" or password == ""):
     username = input("账号：")
